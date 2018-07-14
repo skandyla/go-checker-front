@@ -62,7 +62,7 @@ func ResponseProxyUrl(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	flag.StringVar(&proxyUrl, "proxyUrl", "http://go-cassandra-checker.testing", "url address")
+	flag.StringVar(&proxyUrl, "proxy-url", "http://go-cassandra-checker.testing", "proxy url address")
 	flag.Parse()
 
 	r := mux.NewRouter()
@@ -74,5 +74,7 @@ func main() {
 	http.Handle("/", r)
 
 	// Start the server
-	http.ListenAndServe(":8080", nil)
+	addr := ":8080"
+	log.Println("listen on", addr)
+	log.Fatal(http.ListenAndServe(addr, nil))
 }
