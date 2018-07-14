@@ -5,11 +5,11 @@ ARG GIT_COMMIT=unknown
 ARG GIT_BRANCH=unknown
 LABEL git-commit=$GIT_COMMIT
 LABEL git-branch=$GIT_BRANCH
-ADD main .
+ADD go-checker-front .
 ENV PORT 8080
 EXPOSE 8080
 USER nobody
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/go-checker-front"]
 
 
 #FROM alpine:latest as build
@@ -17,10 +17,10 @@ ENTRYPOINT ["/main"]
 
 #FROM scratch
 #LABEL maintainer="skandyla@gmail.com"
-#COPY main /main
+#COPY main /go-checker-front
 #COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 #COPY --from=build /etc/passwd /etc/passwd
 #ENV PORT 8080
 #EXPOSE 8080
 #USER nobody
-#ENTRYPOINT ["/main"]
+#ENTRYPOINT ["/go-checker-front"]

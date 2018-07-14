@@ -3,7 +3,7 @@ all: get build docker test loadtest inspect clean
 
 OS = $(shell uname -s)
 IMAGENAME = skandyla/go-checker-front
-ARTF = go-cheker-front
+ARTF = go-checker-front
 CGO_ENABLED=0
 GOOS = linux
 PORTHOST = 8080
