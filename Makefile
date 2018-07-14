@@ -48,7 +48,7 @@ docker:
 test:
 	@echo
 	@echo MARK: testing the container
-	docker run -d -p $(PORTHOST):$(PORTCT) -e http_proxy="http://ifconfig.co" $(IMAGENAME)
+	docker run -d -p $(PORTHOST):$(PORTCT) -e proxyUrl="http://ifconfig.co" $(IMAGENAME)
 	docker ps
 	curl -w "\n" http://localhost:8080
 	curl -w "\n" http://localhost:8080/info
