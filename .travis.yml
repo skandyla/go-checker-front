@@ -1,14 +1,11 @@
 os: linux
 language: go
-go: "1.10"
+go:
+  - 1.10
 dist: trusty
 sudo: required
 services:
   - docker
-
-#env:
-#  global:
-#    - CGO_ENABLED=0
 
 env:
   - GIT_BRANCH=$TRAVIS_BRANCH
