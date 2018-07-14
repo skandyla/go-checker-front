@@ -48,16 +48,19 @@ docker:
 test:
 	@echo
 	@echo MARK: testing the container
-	docker run -d -p $(PORTHOST):$(PORTCT) $(IMAGENAME)
+	docker run -d -p $(PORTHOST):$(PORTCT) -e http_proxy="http://ifconfig.co" $(IMAGENAME)
 	docker ps
 	curl -w "\n" http://localhost:8080
-	curl -w "\n" http://localhost:8080/stats
+	curl -w "\n" http://localhost:8080/info
+	curl -w "\n" http://localhost:8080/proxy/
+	curl -w "\n" http://localhost:8080/proxy/ip
+
 
 loadtest:
 	@echo
 	@echo MARK: make loadtest of the container
-	docker run --net="host" --rm skandyla/wrk -c60 -d5 -t10  http://localhost:8080/stats
-	curl -w "\n" http://localhost:8080/stats
+	docker run --net="host" --rm skandyla/wrk -c60 -d5 -t10  http://localhost:8080/info
+	curl -w "\n" http://localhost:8080/info
 
 clean:
 	@echo
